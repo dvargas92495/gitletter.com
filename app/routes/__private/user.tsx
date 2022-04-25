@@ -1,32 +1,31 @@
 import React from "react";
-import { UserButton, useUser } from "@clerk/remix";
+import {  useUser } from "@clerk/remix";
 import getMeta from "@dvargas92495/ui/utils/getMeta";
 import { Link, Outlet, useMatches } from "@remix-run/react";
 
-const TABS = [
-  { id: "page" },
-  { id: "tab" },
-  { id: "hello" },
-];
+const TABS = [{ id: "page" }, { id: "tab" }, { id: "hello" }];
 
 const UserPage: React.FunctionComponent = () => {
   const user = useUser();
   const matches = useMatches();
   const currentTabPath = matches
     .slice(-1)[0]
-    .pathname.replace(/^\/user\//, "")
-    .replace(/\\$/, "");
+    .pathname.replace(/^\/user/, "")
+    .replace(/^\//, "")
+    .replace(/\/$/, "");
   const currentTab = currentTabPath || "Dashboard";
   return (
     <div className="min-h-full flex">
       <nav className="bg-gray-800 min-h-full w-60 flex flex-col text-gray-200">
         <div className="p-4 flex items-center">
           <div className="flex-shrink-0 mr-4">
-            <img
-              className="h-12 w-12"
-              src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-              alt="Workflow"
-            />
+            <Link to={"/user"}>
+              <img
+                className="h-12 w-12 cursor-pointer"
+                src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                alt="Workflow"
+              />
+            </Link>
           </div>
           <h2 className="text-white text-2xl font-bold">App</h2>
         </div>
@@ -54,7 +53,11 @@ const UserPage: React.FunctionComponent = () => {
           ))}
         </div>
         <div className="h-12 bg-gray-700 flex items-center px-4">
-          <UserButton />
+          <img
+            className="h-12 w-12 cursor-pointer"
+            src={user.user?.profileImageUrl}
+            alt="Image"
+          />
           <div className="ml-4">
             {user.user?.firstName} {user.user?.lastName}
           </div>
