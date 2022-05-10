@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "target": "es2015",
+    "target": "es2019",
     "allowJs": false,
     "lib": ["es2019", "dom", "dom.iterable"],
     "module": "commonjs",
@@ -22,6 +22,6 @@
       "~/*": ["./app/*"]
     }
   },
-  "include": ["app", "api", "migrations", "remix.env.d.ts"],
+  "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "**/__tests__/*"]
 }

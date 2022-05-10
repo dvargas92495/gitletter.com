@@ -1,3 +1,3 @@
-import PublicPage from "@dvargas92495/ui/components/PublicLayout";
+import PublicPage from "@dvargas92495/app/components/PublicLayout";
 
 export default PublicPage;
