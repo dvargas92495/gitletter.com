@@ -29,4 +29,4 @@ jobs:
       - name: install
         run: npm install
       - name: migrate
-        run: npx fuego migrate
+        run: npx fuego migrate --overwrite 2022-04-28-10-47-create-digests-table

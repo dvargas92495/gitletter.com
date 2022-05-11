@@ -1,4 +1,4 @@
-import getMysqlConnection from "@dvargas92495/api/mysql";
+import getMysqlConnection from "@dvargas92495/app/backend/mysql.server";
 import type { MigrationProps } from "fuegojs/dist/migrate";
 
 export const migrate = ({ connection }: MigrationProps) => {

@@ -12,7 +12,7 @@ const TABS = [
 ];
 
 const UserPage: React.FunctionComponent = () => {
-  return <UserDashboard tabs={TABS} />;
+  return <UserDashboard tabs={TABS} title={"GitLetter"} />;
 };
 
 export const meta = getMeta({

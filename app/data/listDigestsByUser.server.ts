@@ -1,15 +1,25 @@
 import getMysql from "@dvargas92495/app/backend/mysql.server";
 
-const listDigestsByUser = () =>
+const listDigestsByUser = ({ userId }: { userId: string }) =>
   getMysql()
-    .then((cxn) => cxn.execute(`SELECT * FROM digests`))
+    .then((cxn) =>
+      cxn.execute(
+        `SELECT uuid, name, description FROM digests WHERE user_id = ?`,
+        [userId]
+      )
+    )
     .then((records) => {
-      const data = records as {}[];
+      const data = records as {
+        uuid: string;
+        name: string;
+        description: string;
+      }[];
       return {
         data,
-        columns: data.length
-          ? Object.keys(data[0]).map((k) => ({ Header: k, accessor: k }))
-          : [],
+        columns: [
+          { Header: "Name", accessor: "name" },
+          { Header: "Description", accessor: "description" },
+        ],
         count: data.length,
       };
     });

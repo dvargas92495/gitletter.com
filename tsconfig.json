@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
-    "jsx": "react",
+    "jsx": "react-jsx",
     "target": "es2019",
     "allowJs": false,
+    "baseUrl": ".",
     "lib": ["es2019", "dom", "dom.iterable"],
     "module": "commonjs",
     "moduleResolution": "node",
@@ -18,6 +19,9 @@
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
     "paths": {
       "~/*": ["./app/*"]
     }
