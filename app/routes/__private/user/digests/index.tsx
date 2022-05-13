@@ -4,13 +4,14 @@ import listDigestsByUser from "../../../../data/listDigestsByUser.server";
 import Table from "@dvargas92495/app/components/Table";
 import DefaultErrorBoundary from "@dvargas92495/app/components/DefaultErrorBoundary";
 import DefaultCatchBoundary from "@dvargas92495/app/components/DefaultCatchBoundary";
-import { Link } from "@remix-run/react";
+import { Link, useNavigate } from "@remix-run/react";
 
 const UserDigests = () => {
+  const navigate = useNavigate();
   return (
     <div className="max-w-3xl flex flex-col h-full">
       <div className="flex-grow mb-2 mt-8">
-        <Table />
+        <Table onRowClick={(row) => navigate(`/user/digests/${row.uuid}`)} />
       </div>
       <div className="justify-start flex w-full mb-8">
         <Link
