@@ -1,4 +1,5 @@
 import remixAppLoader from "@dvargas92495/app/backend/remixAppLoader.server";
+import Button from "@dvargas92495/app/components/Button";
 import DefaultCatchBoundary from "@dvargas92495/app/components/DefaultCatchBoundary";
 import DefaultErrorBoundary from "@dvargas92495/app/components/DefaultErrorBoundary";
 import type { LoaderFunction } from "@remix-run/node";
@@ -14,8 +15,26 @@ const Title = (data: DigestData) => {
 const DigestDetailPage = () => {
   const data = useLoaderData<DigestData>();
   return (
-    <div>
-      <h2>{data.description}</h2>
+    <div className="h-full">
+      <p className="mb-8">{data.description}</p>
+      <div className="rounded-3xl shadow-lg p-8 max-h-96 h-full max-w-xl bg-gray-100">
+        <h2 className="text-lg font-bold mb-8 flex items-center justify-between">
+          <span>Sources</span>
+          <Button>+ New</Button>
+        </h2>
+      </div>
+      <div className="rounded-3xl shadow-lg p-8 max-h-96 h-full max-w-xl">
+        <h2 className="text-lg font-bold mb-8 flex items-center justify-between">
+          <span>Templates</span>
+          <Button>+ New</Button>
+        </h2>
+      </div>
+      <div className="rounded-3xl shadow-lg p-8 max-h-96 h-full max-w-xl">
+        <h2 className="text-lg font-bold mb-8 flex items-center justify-between">
+          <span>Outputs</span>
+          <Button>+ New</Button>
+        </h2>
+      </div>
     </div>
   );
 };
