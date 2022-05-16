@@ -1,4 +1,4 @@
-import BaseInput from "@dvargas92495/app/components/BaseInput";
+import Switch from "@dvargas92495/app/components/Switch";
 import DefaultErrorBoundary from "@dvargas92495/app/components/DefaultErrorBoundary";
 import DefaultCatchBoundary from "@dvargas92495/app/components/DefaultCatchBoundary";
 import { useUser } from "@clerk/remix";
@@ -34,7 +34,7 @@ const SourcesPage = () => {
       <div className="grid-cols-3 grid gap-4">
         {SOURCES.map((source) => (
           <div
-            className="p-4 border border-gray-200 rounded-md flex items-center gap-4 hover:bg-gray-300 shadow-sm cursor-pointer"
+            className="pl-3 border border-gray-200 rounded-md flex items-center gap-4 hover:bg-gray-300 shadow-sm cursor-pointer pt-6"
             key={source.id}
             onClick={() =>
               user &&
@@ -52,13 +52,14 @@ const SourcesPage = () => {
                 )
             }
           >
-            <BaseInput
-              type={"checkbox"}
+            <Switch
               defaultChecked={accounts.has(source.id)}
-              disabled
+              label={
+                <span className="inline-flex gap-4 items-center">
+                  <source.Icon /> <span className="inline-block">{source.service}</span>
+                </span>
+              }
             />
-            <source.Icon />
-            <span className="text-lg opacity-75">{source.service}</span>
           </div>
         ))}
       </div>
