@@ -14,13 +14,13 @@ const Title = (data: DigestData) => {
 
 const Tab = ({ children, to }: React.PropsWithChildren<{ to: string }>) => {
   const matches = useMatches();
-  const current = matches[matches.length - 1].pathname;
-  const root = matches[matches.length - 2].pathname;
+  const current = matches[5].pathname;
+  const root = matches[4].pathname;
   const active = `${root}/${to}` === current;
   return (
     <Link
       to={to}
-      className={`rounded-lg border border-sky-400 text-sky-400 hover:bg-sky-100 cursor-pointer active:bg-sky-200 py-2 px-4 ${
+      className={`rounded-lg border border-sky-600 text-sky-600 hover:bg-sky-100 cursor-pointer active:bg-sky-200 py-2 px-4 ${
         active ? "bg-sky-200" : "bg-none"
       }`}
     >
@@ -40,7 +40,7 @@ const DigestDetailPage = () => {
         <Tab to={"templates"}>Templates</Tab>
         <Tab to={"outputs"}>Outputs</Tab>
       </div>
-      <div className="rounded-3xl shadow-lg p-8 max-h-96 h-full max-w-xl bg-gray-100">
+      <div className="rounded-3xl shadow-lg p-8 max-h-[440px] h-full max-w-xl bg-gray-100">
         <Outlet />
       </div>
     </div>
