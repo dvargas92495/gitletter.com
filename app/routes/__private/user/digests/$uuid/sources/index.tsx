@@ -2,7 +2,7 @@ export { default as ErrorBoundary } from "@dvargas92495/app/components/DefaultCa
 export { default as CatchBoundary } from "@dvargas92495/app/components/DefaultErrorBoundary";
 import remixAppLoader from "@dvargas92495/app/backend/remixAppLoader.server";
 import type { LoaderFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 import listSourcesInDigests from "~/data/listSourcesInDigests.server";
 
 const AllSourcesInDigestPage = () => {
@@ -11,9 +11,9 @@ const AllSourcesInDigestPage = () => {
   return (
     <div>
       {data.sources.map((source) => (
-        <div key={source.uuid}>
+        <Link to={source.uuid} key={source.uuid}>
           {source.provider_id} | {source.resource} | {source.identifier}
-        </div>
+        </Link>
       ))}
     </div>
   );

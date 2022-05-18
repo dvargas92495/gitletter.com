@@ -32,7 +32,7 @@ const Tab = ({ children, to }: React.PropsWithChildren<{ to: string }>) => {
 const DigestDetailPage = () => {
   const data = useLoaderData<DigestData>();
   return (
-    <div className="h-full">
+    <div className="h-full flex flex-col pb-16">
       <p className="mb-8">{data.description}</p>
       <div className="flex gap-4 items-center mb-4">
         <Tab to={""}>Settings</Tab>
@@ -40,7 +40,7 @@ const DigestDetailPage = () => {
         <Tab to={"templates"}>Templates</Tab>
         <Tab to={"outputs"}>Outputs</Tab>
       </div>
-      <div className="rounded-3xl shadow-lg p-8 max-h-[440px] h-full max-w-xl bg-gray-100">
+      <div className="rounded-3xl shadow-lg p-8 flex-grow h-full max-w-xl bg-gray-100">
         <Outlet />
       </div>
     </div>

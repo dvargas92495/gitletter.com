@@ -4,6 +4,7 @@ import remixAppAction from "@dvargas92495/app/backend/remixAppAction.server";
 import remixAppLoader from "@dvargas92495/app/backend/remixAppLoader.server";
 import Button from "@dvargas92495/app/components/Button";
 import TextInput from "@dvargas92495/app/components/TextInput";
+import Select from "@dvargas92495/app/components/Select";
 import { ActionFunction, LoaderFunction, redirect } from "@remix-run/node";
 import { Form, useLoaderData } from "@remix-run/react";
 import addSourceToDigest from "~/data/addSourceToDigest.server";
@@ -12,19 +13,24 @@ const NewSourceInDigestPage = () => {
   const data = useLoaderData<Awaited<ReturnType<typeof listExternalSources>>>();
   return (
     <Form method={"post"}>
-      <select name={"provider"}>
-        {data.accounts.map((a) => (
-          <option id={a.id} key={a.id}>
-            <img
-              src={a.icon}
-              width={16}
-              height={16}
-              className={"rounded-full"}
-            />{" "}
-            <span>{a.name}</span>
-          </option>
-        ))}
-      </select>
+      <Select
+        name={"provider"}
+        label={"Provider"}
+        options={data.accounts.map((acc) => ({
+          id: acc.id,
+          label: (
+            <>
+              <img
+                src={acc.icon}
+                width={16}
+                height={16}
+                className={"rounded-full inline-block"}
+              />{" "}
+              <span>{acc.name}</span>
+            </>
+          ),
+        }))}
+      ></Select>
       <TextInput name={"resource"} label={"Resource"} />
       <TextInput name={"identifier"} label={"Identifier"} />
       <Button>Add</Button>
