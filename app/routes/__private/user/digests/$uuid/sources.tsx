@@ -16,7 +16,7 @@ const DigestSources = () => {
           + New
         </Link>
       </h2>
-      <div>
+      <div className="flex-grow">
           <Outlet />
       </div>
     </>

@@ -58,11 +58,11 @@ export const loader: LoaderFunction = (args) => {
 
 export const action: ActionFunction = (args) => {
   return remixAppAction(args, ({ method, userId, data, params }) => {
-    if (method === "POST")
+    if (method === "POST") {
       return addSourceToDigest({ userId, data, params }).then(() =>
         redirect(`/user/digests/${params["uuid"]}/sources`)
       );
-    else throw new Response(`Method ${method} Not Found`, { status: 404 });
+    } else throw new Response(`Method ${method} Not Found`, { status: 404 });
   });
 };
 

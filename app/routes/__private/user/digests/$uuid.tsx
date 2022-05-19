@@ -40,7 +40,7 @@ const DigestDetailPage = () => {
         <Tab to={"templates"}>Templates</Tab>
         <Tab to={"outputs"}>Outputs</Tab>
       </div>
-      <div className="rounded-3xl shadow-lg p-8 flex-grow h-full max-w-xl bg-gray-100">
+      <div className="rounded-3xl shadow-lg p-8 flex-grow h-full max-w-xl bg-gray-100 flex flex-col">
         <Outlet />
       </div>
     </div>
