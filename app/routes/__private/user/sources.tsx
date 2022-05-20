@@ -1,6 +1,6 @@
 import Switch from "@dvargas92495/app/components/Switch";
-export {default as ErrorBoundary} from "@dvargas92495/app/components/DefaultErrorBoundary";
-export  {default as CatchBoundary} from "@dvargas92495/app/components/DefaultCatchBoundary";
+export { default as ErrorBoundary } from "@dvargas92495/app/components/DefaultErrorBoundary";
+export { default as CatchBoundary } from "@dvargas92495/app/components/DefaultCatchBoundary";
 import { useUser } from "@clerk/remix";
 import SOURCES from "~/enums/sources";
 
