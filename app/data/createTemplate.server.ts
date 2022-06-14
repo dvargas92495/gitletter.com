@@ -1,6 +1,6 @@
 import getMysqlConnection from "@dvargas92495/app/backend/mysql.server";
 import { v4 } from "uuid";
-import AWS from "aws-sdk";
+import uploadFile from "@dvargas92495/app/backend/uploadFile.server";
 
 const createTemplate = ({
   userId,
@@ -14,19 +14,17 @@ const createTemplate = ({
   const content = data.content[0] || "";
   const uuid = v4();
   const now = new Date();
-  return getMysqlConnection().then(({ execute, destroy }) =>
-    execute(
-      `INSERT INTO templates (uuid, name, description, user_id, created_date, updated_date) VALUES (?,?,?, ?, ?, ?)`,
-      [uuid, name, description, userId, now, now]
-    ).then(() => destroy())
-  ).then(() => {
-    //   const s3 = new AWS.S3();
-    //   s3.upload({
-    //       Bucket: process.env.NODE_ENV
-    //   })
-    //
-    // aws-sdk-plus
-  });
+  return getMysqlConnection()
+    .then(({ execute, destroy }) =>
+      execute(
+        `INSERT INTO templates (uuid, name, description, user_id, created_date, edited_date) VALUES (?,?,?, ?, ?, ?)`,
+        [uuid, name, description, userId, now, now]
+      ).then(() => destroy())
+    )
+    .then(() => {
+      return uploadFile({ Body: content, Key: `templates/${uuid}.html` });
+    })
+    .then(() => uuid);
 };
 
 export default createTemplate;
