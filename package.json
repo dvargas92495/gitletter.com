@@ -19,10 +19,10 @@
   },
   "devDependencies": {
     "@types/sanitize-html": "^2.6.2",
-    "fuegojs": "^0.30.0"
+    "fuegojs": "^0.30.1"
   },
   "dependencies": {
-    "@dvargas92495/app": "^0.8.14",
+    "@dvargas92495/app": "^0.8.15",
     "sanitize-html": "^2.7.0"
   }
 }
