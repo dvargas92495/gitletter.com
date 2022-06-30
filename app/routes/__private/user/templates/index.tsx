@@ -14,18 +14,20 @@ const TemplatesPage = () => {
         {data.templates.map((t) => (
           <div
             key={t.uuid}
-            className="rounded-2xl shadow-lg p-8 max-h-32 h-full bg-gray-100"
+            className="rounded-2xl shadow-lg p-8 max-h-96 h-full bg-gray-100 flex flex-col gap-2"
           >
-            <img
+            {/* <img
               className="max-h-20 h-full rounded-t-2xl mb-4"
               src={`/images/templates/${t.uuid}.png`}
-            />
-            <h1 className="font-bold text-2xl mb-2">{t.name}</h1>
-            <h2 className="font-medium text-base mb-2 opacity-75">
+            /> */}
+            <Link to={t.uuid} className="font-bold text-2xl cursor-pointer">
+              {t.name}
+            </Link>
+            <p className="font-medium text-base opacity-75 flex-grow">
               {t.description}
-            </h2>
+            </p>
             <p className="flex justify-right">
-              <span className="opacity-50">
+              <span className="opacity-50 text-xs">
                 Last edited: {new Date(t.editedDate).toLocaleString()}
               </span>
             </p>

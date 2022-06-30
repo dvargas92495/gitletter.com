@@ -1,18 +1,34 @@
 import React from "react";
+import Landing, {
+  Showcase,
+  Splash,
+} from "@dvargas92495/app/components/Landing";
 
 const Home: React.FC = () => (
-  <div className="flex flex-col">
-    <div className="flex">
-      <div className="flex-grow">
-        <h1 className="font-bold text-5xl">
-          Turn Your Git Commits Into A Newsletter Digest
-        </h1>
-      </div>
-      <div className="flex-grow">
-          INSERT IMAGE HERE
-      </div>
-    </div>
-  </div>
+  <Landing>
+    <Splash
+      title={"Turn Your Git Commits Into A Newsletter Digest"}
+      subtitle={
+        "Use GitLetter to automatically turn your work into digestable newsletters for your users."
+      }
+      isWaitlist
+    />
+    <Showcase
+      header="You could connect GitLetter to any of the following outputs!"
+      showCards={[
+        {
+          title: "ConvertKit",
+          description: "Coming Soon...",
+        },
+        {
+          title: "GitLetter",
+          description: "Coming Soon...",
+        },
+      ]}
+    />
+  </Landing>
 );
+
+export const handle = Landing.handle;
 
 export default Home;
